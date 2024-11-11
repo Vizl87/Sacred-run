@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://dktwkho80gtlk"]
+
+[ext_resource type="Script" path="res://cassandracontroller.gd" id="1_nwbwx"]
+[ext_resource type="Texture2D" uid="uid://bcyxbki32k5no" path="res://sprites/Screenshot_2024-09-04_at_13-50-45_Pixelate_Image_Online_-_Free_Image_Pixelator_Tool-removebg-preview.png" id="1_uru67"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jt0pq"]
+size = Vector2(29, 55.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xd5t3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uru67")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_nwbwx")
+jump_force = -1600.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-8, -0.75)
+shape = SubResource("RectangleShape2D_jt0pq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(-9, -0.999999)
+scale = Vector2(0.184358, 0.110033)
+texture = ExtResource("1_uru67")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-9, -1)
+rotation = 0.00787668
+scale = Vector2(0.230651, 0.111607)
+sprite_frames = SubResource("SpriteFrames_xd5t3")
+animation = &"idle"
+frame_progress = 0.338214
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+root_node = NodePath("../..")
+
+[node name="Node2D" type="Node2D" parent="AnimatedSprite2D"]

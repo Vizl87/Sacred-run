@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://bc24c0nuoe125"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_7o5fk"]
+[ext_resource type="Texture2D" uid="uid://mf5ad7n72n48" path="res://sprites/New Piskel(1).png" id="2_o8f2n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj5w8"]
+atlas = ExtResource("2_o8f2n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_027qo"]
+atlas = ExtResource("2_o8f2n")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vnno"]
+atlas = ExtResource("2_o8f2n")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76vj1"]
+atlas = ExtResource("2_o8f2n")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbdsr"]
+atlas = ExtResource("2_o8f2n")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t2h4"]
+atlas = ExtResource("2_o8f2n")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ye1eo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj5w8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_027qo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vnno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76vj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbdsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t2h4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj5w8")
+}],
+"loop": true,
+"name": &"hearts",
+"speed": 4.0
+}]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7o5fk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ye1eo")
+animation = &"hearts"
+autoplay = "hearts"

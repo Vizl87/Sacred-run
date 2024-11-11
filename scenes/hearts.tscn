@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=3 uid="uid://dfb4fiyelss6o"]
+
+[ext_resource type="Script" path="res://scripts/heart_controller.gd" id="1_72sxc"]
+[ext_resource type="Texture2D" uid="uid://mf5ad7n72n48" path="res://sprites/New Piskel(1).png" id="2_7m8nr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj5w8"]
+atlas = ExtResource("2_7m8nr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_027qo"]
+atlas = ExtResource("2_7m8nr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vnno"]
+atlas = ExtResource("2_7m8nr")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76vj1"]
+atlas = ExtResource("2_7m8nr")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbdsr"]
+atlas = ExtResource("2_7m8nr")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t2h4"]
+atlas = ExtResource("2_7m8nr")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qbau7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj5w8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_027qo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vnno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76vj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbdsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t2h4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj5w8")
+}],
+"loop": false,
+"name": &"hearts",
+"speed": 4.0
+}]
+
+[sub_resource type="Animation" id="Animation_m8ff8"]
+resource_name = "heart "
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m4hay"]
+_data = {
+"heart ": SubResource("Animation_m8ff8")
+}
+
+[node name="hearts" type="Panel" node_paths=PackedStringArray("h1", "h2", "h3")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -232.0
+offset_bottom = 57.0
+grow_horizontal = 0
+script = ExtResource("1_72sxc")
+h1 = NodePath("HBoxContainer2/hart anim1")
+h2 = NodePath("HBoxContainer2/allahu akbar")
+h3 = NodePath("HBoxContainer2/heart anim32D")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -28.0
+offset_right = 116.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="hart anim1" type="AnimatedSprite2D" parent="HBoxContainer2"]
+texture_filter = 1
+position = Vector2(46, 34.5)
+scale = Vector2(2.922, 2.922)
+sprite_frames = SubResource("SpriteFrames_qbau7")
+animation = &"hearts"
+
+[node name="allahu akbar" type="AnimatedSprite2D" parent="HBoxContainer2"]
+texture_filter = 1
+position = Vector2(108, 35.5)
+scale = Vector2(2.922, 2.922)
+sprite_frames = SubResource("SpriteFrames_qbau7")
+animation = &"hearts"
+
+[node name="heart anim32D" type="AnimatedSprite2D" parent="HBoxContainer2"]
+texture_filter = 1
+position = Vector2(175, 34.5)
+scale = Vector2(2.92175, 2.92175)
+sprite_frames = SubResource("SpriteFrames_qbau7")
+animation = &"hearts"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer2"]
+root_node = NodePath("../../../..")
+libraries = {
+"": SubResource("AnimationLibrary_m4hay")
+}
+autoplay = "heart "

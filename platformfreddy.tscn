@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://djdegjcrmpkp5"]
+
+[ext_resource type="Texture2D" uid="uid://csq6b1pq18mwy" path="res://rock.png" id="1_kl54p"]
+[ext_resource type="Texture2D" uid="uid://bnr5ko51ntc4c" path="res://sprites/platforjnm/pixil-frame-0.png" id="2_i6dqc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bg623"]
+size = Vector2(528, 152)
+
+[node name="platform" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(0.830249, 0, 0.17268, 1)
+position = Vector2(280, 268)
+shape = SubResource("RectangleShape2D_bg623")
+
+[node name="Rock" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(664, -192)
+scale = Vector2(8.75, 6.13934)
+texture = ExtResource("1_kl54p")
+
+[node name="Pixil-frame-0" type="Sprite2D" parent="."]
+position = Vector2(280, 280)
+scale = Vector2(5.5, 5.5)
+texture = ExtResource("2_i6dqc")
+
+[node name="Pixil-frame-1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-176, 336)
+texture = ExtResource("2_i6dqc")
