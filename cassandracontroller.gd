@@ -17,14 +17,14 @@ extends CharacterBody2D
 @onready var currenthealth: int = maxhealth
 
 @export var health_anim: Panel
-
 var is_dashing = false
 var dash_start_position = 0
 var dash_direction = 0
 var dash_timer = 0
 # Maximum health
 @onready var health = 3  # Starting health
-@export var collectible = 0
+@export var collectible: int = 0
+@onready var kyllä: int = collectible
 # Coyote time variables
 @export var coyote_time = 0.2
 @export var coyote_time_remaining = 0.0  # Grace period for jumping after leaving the ground
@@ -96,26 +96,31 @@ func _physics_process(delta: float) -> void:
 		is_dashing = false
 	
 	
-		
+
 	
 	if currenthealth == 0:
 		die()
 		
 		
 		currenthealth = maxhealth
-	
-		
-		
-	if Input.is_action_just_pressed("kys"):
-		die()
-		print("pathetic just like your life")
-		currenthealth = maxhealth
-		
 
 		
-
-	
 		
+	if Input.is_action_just_pressed("emp"):
+		$"../Piiloansa".hide()
+		$"../Piiloansa/neliö".disabled = true
+		await get_tree().create_timer(7.0).timeout
+		$"../Piiloansa".show()
+		$"../Piiloansa/neliö".disabled = false
+		 
+
+
+		
+#main mekaniikka joka saa ansat menee  pois käytöstä 7 sekunniksi
+	if Input.is_action_just_pressed("heal"):
+		currenthealth += 1
+
+
 
 		
 
@@ -125,15 +130,32 @@ func _physics_process(delta: float) -> void:
  
 	# Final movement
 	move_and_slide()
+
+
+
+
 	
 
 
 # Function to handle death
 var played = false
-
+#todo hoida collectable homma loppuun
 func die() -> void:
 	await get_tree().create_timer(0.1).timeout
 	get_tree().reload_current_scene()
+	
+func print_collectible():
+	print(collectible)
+	if currenthealth == 0:
+		get_tree().reload_current_scene()
+		collectible = 0
+		
+		
+
+		
+		
+	
+	
 	
 	# You can implement what happens when the player dies, like restarting the game, reloading a level, etc.
 	# For example, reset health and position:
@@ -148,13 +170,24 @@ func _on_kuolema_body_entered(_body: Node2D) -> void:
 	
 	
 	#velocity.x = move_toward(velocity.x, 0, walk_speed * deceleration)
+#piiloansa perkele!
 
+ # Start the timer to delay seeking to the last frame slightly
 func _on__spike_area__body_entered(body: Node2D) -> void:
+	
 	if body.name == "cassandra":
 		currenthealth -= 1
 		health_anim.animation_finished = false
-	if currenthealth == 0:
-		print("you blind or something?")
+		$"../Piiloansa/neliö/Ansa".play()
+func _on_AnimatedSprite_animation_finished():
+	if $"../Piiloansa/neliö/Ansa" .current_animation == "Ansa":
+		$"../Piiloansa/neliö/Ansa".frame = 10
+
+		
+		
+		
+		
+	
 	
 	
 	

@@ -24,6 +24,7 @@ func _on_health_changed():
 		h2.show()
 		h3.show()
 		
+		
 	if player.currenthealth == 2 && !animation_finished:
 		h1.play("hearts")
 		h2.play("hearts")

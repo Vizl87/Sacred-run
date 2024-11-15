@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cxgtryiwbokgg"]
+[gd_scene load_steps=33 format=4 uid="uid://cxgtryiwbokgg"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_cqrf5"]
 [ext_resource type="PackedScene" uid="uid://dktwkho80gtlk" path="res://scenes/cassandra.tscn" id="1_h0h60"]
@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dfb4fiyelss6o" path="res://scenes/hearts.tscn" id="5_emprv"]
 [ext_resource type="Texture2D" uid="uid://c778tvqkk4m5j" path="res://sprites/pxArt(1).png" id="6_emhvo"]
 [ext_resource type="PackedScene" uid="uid://c1on8wi7st54t" path="res://sprites/collectible.tscn" id="6_td3bg"]
-[ext_resource type="Texture2D" uid="uid://co085yau08x54" path="res://scenes/ansa.png" id="8_s1av6"]
 [ext_resource type="Script" path="res://sprites/collectible.gd" id="9_5c744"]
 [ext_resource type="Texture2D" uid="uid://bnr5ko51ntc4c" path="res://sprites/platforjnm/pixil-frame-0.png" id="9_7oepd"]
 [ext_resource type="Texture2D" uid="uid://csq6b1pq18mwy" path="res://rock.png" id="9_8s8tv"]
+[ext_resource type="Texture2D" uid="uid://cwurn6g2kw705" path="res://sprites/platforjnm/ANSA.png" id="9_g5e5o"]
 
 [sub_resource type="Curve" id="Curve_kgp6u"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0833333, 0.995672), 0.0, 0.0, 0, 0, Vector2(1, 0.727364), -2.21186, 0.0, 0, 0]
@@ -44,6 +44,91 @@ size = Vector2(228.25, 55)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqxxx"]
 size = Vector2(72, 19.25)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddp01"]
+atlas = ExtResource("9_g5e5o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwx2a"]
+atlas = ExtResource("9_g5e5o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x230e"]
+atlas = ExtResource("9_g5e5o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpuwe"]
+atlas = ExtResource("9_g5e5o")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atiik"]
+atlas = ExtResource("9_g5e5o")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clrln"]
+atlas = ExtResource("9_g5e5o")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5g7t"]
+atlas = ExtResource("9_g5e5o")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6tcv"]
+atlas = ExtResource("9_g5e5o")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5vqm"]
+atlas = ExtResource("9_g5e5o")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjya5"]
+atlas = ExtResource("9_g5e5o")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b5xi"]
+atlas = ExtResource("9_g5e5o")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_euiq3"]
+animations = [{
+"frames": [{
+"duration": 7.9,
+"texture": SubResource("AtlasTexture_ddp01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwx2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x230e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpuwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atiik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clrln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5g7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6tcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5vqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjya5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b5xi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 39.0
+}]
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bgabx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywq6h"]
@@ -54,7 +139,7 @@ script = ExtResource("1_cqrf5")
 metadata/_edit_vertical_guides_ = [151.0]
 
 [node name="cassandra" parent="." node_paths=PackedStringArray("health_anim") instance=ExtResource("1_h0h60")]
-position = Vector2(637, 73)
+position = Vector2(623, 78)
 collision_mask = 3
 jump_force = -550.0
 dash_curve = SubResource("Curve_kgp6u")
@@ -67,7 +152,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAUAAMAAAABAAAAAAAVAAMAAAABAAAAAAAWAAMAAAABAAAAAAATAAMAAAAAAAAAAAAXAAMAAAACAAAAAAAcAAMAAAABAAAAAAAdAAMAAAABAAAAAAAbAAMAAAAAAAAAAAAeAAMAAAACAAAAAAA6AAMAAAACAAAAAAA5AAMAAAABAAAAAAA4AAMAAAABAAAAAAA3AAMAAAABAAAAAAA2AAMAAAAAAAAAAABOAAMAAAAAAAAAAABPAAMAAAABAAAAAABQAAMAAAABAAAAAABRAAMAAAABAAAAAABSAAMAAAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAAUAAMAAAABAAAAAAAVAAMAAAABAAAAAAAWAAMAAAABAAAAAAATAAMAAAAAAAAAAAAXAAMAAAACAAAAAAAcAAMAAAABAAAAAAAdAAMAAAABAAAAAAAbAAMAAAAAAAAAAAAeAAMAAAACAAAAAAA6AAMAAAACAAAAAAA5AAMAAAABAAAAAAA4AAMAAAABAAAAAAA3AAMAAAABAAAAAAA2AAMAAAAAAAAAAABHAAMAAAAAAAAAAABIAAMAAAABAAAAAABJAAMAAAABAAAAAABKAAMAAAABAAAAAABLAAMAAAACAAAAAABQAAIAAAAAAAAAAABRAAIAAAABAAAAAABSAAIAAAABAAAAAABTAAIAAAABAAAAAABUAAIAAAACAAAAAABVAAEAAAAAAAAAAGBVAAAAAAAAAAAAAGBVAP//AAAAAAAAAGBVAP7/AAAAAAAAAGBVAP3/AAAAAAAAAGBVAPz/AAAAAAAAAGBVAPv/AAAAAAAAAGBVAPr/AAAAAAAAAGBVAPn/AAAAAAAAAGBVAPj/AAAAAAAAAGBVAPf/AAAAAAAAAGBIAPf/AAABAAAAAABHAPf/AAABAAAAAABGAPf/AAABAAAAAABFAPf/AAABAAAAAABEAPf/AAABAAAAAABDAPf/AAAAAAAAAABJAPf/AAACAAAAAAA5APn/AAABAAAAAAA4APn/AAABAAAAAAA3APn/AAABAAAAAAA2APn/AAABAAAAAAA1APn/AAAAAAAAAAA6APn/AAACAAAAAAAvAPj/AAACAAAAAFAsAPf/AAACAAAAAFApAPb/AAACAAAAAFAlAPX/AAACAAAAAFAhAPT/AAACAAAAAFAhAPP/AAACAAAAAFAhAPL/AAACAAAAAFAhAPH/AAACAAAAAFAhAPD/AAACAAAAAFAhAO//AAACAAAAAFAhAO7/AAACAAAAAFAhAO3/AAACAAAAAFAhAOz/AAACAAAAAFAhAOv/AAACAAAAAFAhAOr/AAACAAAAAFAhAOn/AAACAAAAAFAoAOj/AAABAAAAAAApAOj/AAABAAAAAAAqAOj/AAABAAAAAAArAOj/AAABAAAAAAAsAOj/AAABAAAAAAAtAOj/AAABAAAAAAAuAOj/AAABAAAAAAAvAOj/AAABAAAAAAAwAOj/AAABAAAAAAAxAOj/AAABAAAAAAAyAOj/AAABAAAAAAAzAOj/AAABAAAAAAA0AOj/AAABAAAAAAAoAOX/AAABAAAAAAApAOX/AAABAAAAAAAqAOX/AAABAAAAAAArAOX/AAABAAAAAAAsAOX/AAABAAAAAAAtAOX/AAABAAAAAAAuAOX/AAABAAAAAAAvAOX/AAABAAAAAAAwAOX/AAABAAAAAAAxAOX/AAABAAAAAAAyAOX/AAABAAAAAAAzAOX/AAABAAAAAAA0AOX/AAABAAAAAAA1AOj/AAABAAAAAAA2AOj/AAABAAAAAAA5AOf/AAABAAAAAAA7AOb/AAABAAAAAAA9AOX/AAABAAAAAAA/AOT/AAABAAAAAABBAOb/AAABAAAAAABDAOj/AAABAAAAAABFAOr/AAABAAAAAABKAOr/AAABAAAAAABLAOr/AAABAAAAAABMAOr/AAABAAAAAABNAOr/AAABAAAAAABOAOr/AAABAAAAAABSAOr/AAABAAAAAABTAOr/AAABAAAAAABUAOr/AAABAAAAAABVAOr/AAABAAAAAABWAOr/AAABAAAAAABXAOr/AAABAAAAAABZAOn/AAAAAAAAAGBZAOj/AAAAAAAAAGBZAOf/AAAAAAAAAGBZAOb/AAAAAAAAAGBZAOX/AAAAAAAAAGBZAOT/AAAAAAAAAGBZAOP/AAAAAAAAAGBZAOL/AAAAAAAAAGBZAOH/AAAAAAAAAGBZAOD/AAAAAAAAAGBaAOD/AAABAAAAAABbAOD/AAABAAAAAABcAOD/AAABAAAAAABdAOD/AAABAAAAAABeAOD/AAABAAAAAABfAOD/AAABAAAAAABgAOD/AAABAAAAAABhAN7/AAACAAAAAGBhAN3/AAACAAAAAGBhANz/AAACAAAAAGBhANv/AAACAAAAAGBhANr/AAACAAAAAGBhANn/AAACAAAAAGBhANj/AAACAAAAAGBhANf/AAACAAAAAGBiANb/AAABAAAAAABjANb/AAABAAAAAABkANb/AAABAAAAAABlANb/AAABAAAAAABmANb/AAABAAAAAABnANb/AAABAAAAAABoANb/AAABAAAAAABpANb/AAABAAAAAABqANb/AAABAAAAAABxAPL/AAABAAAAAAByAPL/AAABAAAAAABzAPL/AAABAAAAAAB0APL/AAABAAAAAAB1APL/AAABAAAAAAB2APL/AAABAAAAAAB3APL/AAABAAAAAAB4APL/AAABAAAAAAB5APL/AAABAAAAAAB6APL/AAABAAAAAAB7APL/AAABAAAAAAB8APL/AAABAAAAAAB9APL/AAABAAAAAAA=")
 tile_set = SubResource("TileSet_bl317")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
@@ -178,42 +263,30 @@ position = Vector2(1246, 66)
 scale = Vector2(0.0186909, 0.425046)
 texture = ExtResource("9_8s8tv")
 
-[node name="_spike_area_" type="Area2D" parent="."]
+[node name="Piiloansa" type="Area2D" parent="."]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(2532, 18)
+position = Vector2(695, 41)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_spike_area_"]
-position = Vector2(42, 73)
-shape = SubResource("RectangleShape2D_sqxxx")
-
-[node name="gloidjlkdesrjhglkidrhytgklidsehgolksdieghtsoklietgjhsdliokegjlodirg" type="Sprite2D" parent="_spike_area_"]
-show_behind_parent = true
-z_index = -1
-position = Vector2(41.9999, 75)
-scale = Vector2(0.139741, 0.0684934)
-texture = ExtResource("8_s1av6")
-
-[node name="_spike_area_2" type="Area2D" parent="."]
-light_mask = 2
-visibility_layer = 2
-position = Vector2(899, 47)
-collision_layer = 2
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="_spike_area_2"]
-visible = false
-position = Vector2(45, 40.625)
-shape = SubResource("RectangleShape2D_sqxxx")
-
-[node name="gloidjlkdesrjhglkidrhytgklidsehgolksdieghtsoklietgjhsdliokegjlodirg" type="Sprite2D" parent="_spike_area_2"]
-show_behind_parent = true
-z_index = -1
+[node name="neliö" type="CollisionShape2D" parent="Piiloansa"]
 position = Vector2(43, 46)
-scale = Vector2(0.232455, 0.113937)
-texture = ExtResource("8_s1av6")
+shape = SubResource("RectangleShape2D_sqxxx")
+
+[node name="Ansa" type="AnimatedSprite2D" parent="Piiloansa/neliö"]
+position = Vector2(-2.99999, 1)
+scale = Vector2(1.75, 0.585602)
+sprite_frames = SubResource("SpriteFrames_euiq3")
+
+[node name="neliö2" type="CollisionShape2D" parent="Piiloansa"]
+position = Vector2(262, 44)
+shape = SubResource("RectangleShape2D_sqxxx")
+
+[node name="Ansa" type="AnimatedSprite2D" parent="Piiloansa/neliö2"]
+position = Vector2(1.52588e-05, 0)
+scale = Vector2(1.75, 0.585602)
+sprite_frames = SubResource("SpriteFrames_euiq3")
 
 [node name="kuolema" type="Area2D" parent="."]
 position = Vector2(178, 770)
@@ -237,13 +310,11 @@ shape = SubResource("RectangleShape2D_ywq6h")
 script = ExtResource("9_5c744")
 
 [node name="collectible" parent="collectables" instance=ExtResource("6_td3bg")]
-position = Vector2(760, 65)
+position = Vector2(908, 57)
 
 [node name="collectible2" parent="collectables" instance=ExtResource("6_td3bg")]
-position = Vector2(727, 64)
+position = Vector2(875, 61)
 
-[connection signal="body_entered" from="_spike_area_" to="." method="_on_spike_body_entered"]
-[connection signal="body_entered" from="_spike_area_" to="cassandra" method="_on__spike_area__body_entered"]
-[connection signal="body_entered" from="_spike_area_2" to="." method="_on_spike_body_entered"]
-[connection signal="body_entered" from="_spike_area_2" to="cassandra" method="_on__spike_area__body_entered"]
+[connection signal="body_entered" from="Piiloansa" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Piiloansa" to="cassandra" method="_on__spike_area__body_entered"]
 [connection signal="body_entered" from="kuolema" to="cassandra" method="_on_kuolema_body_entered"]

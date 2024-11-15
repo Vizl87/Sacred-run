@@ -6,7 +6,7 @@ extends Node2D
 
 
 func _on__spike_area__body_entered(body: Node2D) -> void:
-	ansa.hide()
+	ansa.show()
 	
 
 

@@ -48,7 +48,7 @@ height = 24.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-8, 19)
 sprite_frames = SubResource("SpriteFrames_2acwt")
-frame_progress = 0.769375
+frame_progress = 0.404531
 
 [node name="bone" type="Area2D" parent="."]
 position = Vector2(-46, 12)
