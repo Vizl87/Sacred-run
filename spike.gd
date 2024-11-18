@@ -1,15 +1,29 @@
 extends Area2D
 
-@export var health:  Control
-@export var currenthealth  = 3
-@export var health_anim: Panel
-# Called when the node enters the scene tree for the first time.
-func _on__spike_area__body_entered(body: Node2D) -> void:
+@export var cassandra: CharacterBody2D 
+ 
+
+
+
+@export var ansa: AnimatedSprite2D
+@onready var dumdum = $dumdum
+
+
+signal ansa_laukaistu(damage: int)
+
+func _ready() -> void:
+	ansa.connect("animation_finished", Callable(self, "_on_AnimatedSprite_animation_finished"))
 	
-	if body.name == "cassandra":
-		currenthealth -= 1
-		health_anim.animation_finished = false
-		$"../Piiloansa/neliö/Ansa".play()
+# Called when the node enters the scene tree for the first time.
+func _on_spike_entered(area: Area2D) -> void:
+	ansa.show()
+	dumdum.hide()
+	if area.name == "cassandra":
+		ansa.play("spike")
+		cassandra.currenthealth -= 1
+		
 func _on_AnimatedSprite_animation_finished():
-	if $"../Piiloansa/neliö/Ansa" .current_animation == "Ansa":
-		$"../Piiloansa/neliö/Ansa".frame = 10
+	ansa.frame = 10
+	ansa.stop()
+	ansa.hide()
+	dumdum.show()

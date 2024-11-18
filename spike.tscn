@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bp85hretsdgmh"]
+[gd_scene load_steps=17 format=3 uid="uid://bp85hretsdgmh"]
 
 [ext_resource type="Script" path="res://spike.gd" id="1_bsgm2"]
 [ext_resource type="Texture2D" uid="uid://cwurn6g2kw705" path="res://sprites/platforjnm/ANSA.png" id="2_3rvhj"]
+[ext_resource type="Texture2D" uid="uid://dn3sr1c1p0jah" path="res://ANSA.png" id="3_whfld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxrsn"]
-size = Vector2(149, 71)
+size = Vector2(61, 19.1875)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ddp01"]
 atlas = ExtResource("2_3rvhj")
@@ -88,20 +89,31 @@ animations = [{
 }],
 "loop": false,
 "name": &"spike",
-"speed": 19.0
+"speed": 120.0
 }]
 
-[node name="Area2D" type="Area2D"]
+[node name="Spike" type="Area2D"]
 script = ExtResource("1_bsgm2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(75.5002, 165.8)
+position = Vector2(47.75, 47.25)
 shape = SubResource("RectangleShape2D_hxrsn")
 
 [node name="Ansa" type="AnimatedSprite2D" parent="."]
-position = Vector2(81, 139.3)
-scale = Vector2(4.625, 3.83125)
+texture_filter = 1
+position = Vector2(50, 43)
+scale = Vector2(1.5, 0.709671)
 sprite_frames = SubResource("SpriteFrames_yt0hp")
 animation = &"spike"
 frame = 10
 frame_progress = 1.0
+
+[node name="dumdum" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(49, 43)
+scale = Vector2(1.5, 0.747396)
+texture = ExtResource("3_whfld")
+region_enabled = true
+region_rect = Rect2(31.487, 95.778, 32, 32)
+
+[connection signal="area_entered" from="." to="." method="_on_spike_entered"]

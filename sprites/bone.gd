@@ -5,8 +5,6 @@ extends Area2D
 static var collectible: int = 0
 
 
-@export var currenthealth = 0
-@export var maxhealth: int = currenthealth
 
 
 

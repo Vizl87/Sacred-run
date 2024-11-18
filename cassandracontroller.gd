@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-@export var walk_speed = 300.0
-@export var run_speed = 600.0
+@export var walk_speed = 275
+@export var run_speed = 450
 @export_range(0, 1) var acceleration = 0.1
 @export_range(0, 1) var deceleration = 0.1
 
-@export var jump_force = -550.0
+@export var jump_force = -600.0
 @export_range(0, 1) var decelerate_on_jump_release = 0.5
 
 @export var dash_speed = 1000.0
@@ -21,15 +21,22 @@ var is_dashing = false
 var dash_start_position = 0
 var dash_direction = 0
 var dash_timer = 0
+var dash_amount = 1
 # Maximum health
 @onready var health = 3  # Starting health
 @export var collectible: int = 0
 @onready var kyllä: int = collectible
+@export var spike: int 
 # Coyote time variables
 @export var coyote_time = 0.2
 @export var coyote_time_remaining = 0.0  # Grace period for jumping after leaving the ground
  # Tracks how long the player has been off the platform
 var kuolema = 0
+
+var emp_timer = 7
+var emp_timer_active = false 
+
+
 func _physics_process(delta: float) -> void:
 	
 	health_anim._on_health_changed()
@@ -62,6 +69,7 @@ func _physics_process(delta: float) -> void:
 		# Decelerate when no direction is pressed
 		velocity.x = move_toward(velocity.x, 0, walk_speed * deceleration)
 		
+		
 
 
 
@@ -72,11 +80,13 @@ func _physics_process(delta: float) -> void:
 	
 
 	# Dash activation
-	if Input.is_action_just_pressed("dash") and direction != 0 and not is_dashing and dash_timer <= 0:
+	if Input.is_action_just_pressed("dash") and direction != 0 and not is_dashing and dash_timer <= 0 and dash_amount <= 1:
 		is_dashing = true
 		dash_start_position = position.x
 		dash_direction = direction
-		dash_timer = 0.5
+		dash_timer = 3
+	
+	
 
 	# Perform dash movement
 	if is_dashing:
@@ -104,21 +114,24 @@ func _physics_process(delta: float) -> void:
 		
 		currenthealth = maxhealth
 
-		
-		
-	if Input.is_action_just_pressed("emp"):
-		$"../Piiloansa".hide()
-		$"../Piiloansa/neliö".disabled = true
+	if emp_timer >= 0:
+		emp_timer -= delta
+		print(emp_timer)
+	
+	if Input.is_action_just_pressed("emp") and emp_timer <= 0:
+		gamemanager.ansat1.set_process_mode(PROCESS_MODE_DISABLED)
+		gamemanager.ansat1.visible = false
+		print("öojägdsaö.ih")
 		await get_tree().create_timer(7.0).timeout
-		$"../Piiloansa".show()
-		$"../Piiloansa/neliö".disabled = false
-		 
+		gamemanager.ansat1.set_process_mode(PROCESS_MODE_INHERIT)
+		gamemanager.ansat1.visible = true
+		
+		emp_timer = 7
+		
 
 
 		
-#main mekaniikka joka saa ansat menee  pois käytöstä 7 sekunniksi
-	if Input.is_action_just_pressed("heal"):
-		currenthealth += 1
+
 
 
 
@@ -172,16 +185,11 @@ func _on_kuolema_body_entered(_body: Node2D) -> void:
 	#velocity.x = move_toward(velocity.x, 0, walk_speed * deceleration)
 #piiloansa perkele!
 
- # Start the timer to delay seeking to the last frame slightly
-func _on__spike_area__body_entered(body: Node2D) -> void:
+ # Start the timer to delay+ seeking to the last frame slightly
+
 	
-	if body.name == "cassandra":
-		currenthealth -= 1
-		health_anim.animation_finished = false
-		$"../Piiloansa/neliö/Ansa".play()
-func _on_AnimatedSprite_animation_finished():
-	if $"../Piiloansa/neliö/Ansa" .current_animation == "Ansa":
-		$"../Piiloansa/neliö/Ansa".frame = 10
+	
+
 
 		
 		
