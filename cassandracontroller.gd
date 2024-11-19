@@ -84,7 +84,8 @@ func _physics_process(delta: float) -> void:
 		is_dashing = true
 		dash_start_position = position.x
 		dash_direction = direction
-		dash_timer = 3
+		dash_timer = 0.5
+		
 	
 	
 
@@ -105,9 +106,10 @@ func _physics_process(delta: float) -> void:
 	if dash_timer == 0:
 		is_dashing = false
 	
-	
-
-	
+		
+	if Input.is_action_just_pressed("heal"):
+		currenthealth += 1
+		
 	if currenthealth == 0:
 		die()
 		
