@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjq8m4y4bxd0x"]
+[gd_scene load_steps=6 format=3 uid="uid://cjq8m4y4bxd0x"]
 
-[ext_resource type="Texture2D" uid="uid://cwes5evpoj7wx" path="res://ui/New Piskel-1.png.png" id="1_hedwi"]
+[ext_resource type="StyleBox" uid="uid://dhgcvuxvxfaos" path="res://resources/uistuff.tres" id="1_ltxg2"]
+[ext_resource type="StyleBox" uid="uid://cujj3u3pnxk13" path="res://resources/hover_button.tres" id="1_pdhka"]
+[ext_resource type="Script" path="res://ui.gd" id="3_h4nxf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7f5xv"]
+
+[sub_resource type="Theme" id="Theme_60l7d"]
+Button/constants/h_separation = 8
+Button/font_sizes/font_size = 81
+Button/styles/focus = SubResource("StyleBoxEmpty_7f5xv")
+Button/styles/hover = ExtResource("1_pdhka")
+Button/styles/normal = ExtResource("1_ltxg2")
 
 [node name="ui" type="Control"]
 layout_mode = 3
@@ -9,9 +20,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_60l7d")
+script = ExtResource("3_h4nxf")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -30.0
+offset_right = 33.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+region_rect = Rect2(8, 8, 16, 16)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -24,5 +52,19 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_hedwi")
-region_rect = Rect2(8, 8, 16, 16)
+
+[node name="Button" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "continue"
+
+[node name="Button2" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "controls"
+
+[node name="Button3" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "quit"
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
