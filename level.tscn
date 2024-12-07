@@ -222,6 +222,9 @@ visible = false
 position = Vector2(-9.5, -3.5)
 shape = SubResource("RectangleShape2D_fkhww")
 
+[node name="Timer" type="Timer" parent="cassandra"]
+wait_time = 7.0
+
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
 visible = false
 position = Vector2(1088, 92)

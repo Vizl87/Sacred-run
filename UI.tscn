@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjq8m4y4bxd0x"]
+[gd_scene load_steps=10 format=3 uid="uid://cjq8m4y4bxd0x"]
 
 [ext_resource type="StyleBox" uid="uid://dhgcvuxvxfaos" path="res://resources/uistuff.tres" id="1_ltxg2"]
 [ext_resource type="StyleBox" uid="uid://cujj3u3pnxk13" path="res://resources/hover_button.tres" id="1_pdhka"]
@@ -13,7 +13,97 @@ Button/styles/focus = SubResource("StyleBoxEmpty_7f5xv")
 Button/styles/hover = ExtResource("1_pdhka")
 Button/styles/normal = ExtResource("1_ltxg2")
 
-[node name="ui" type="Control"]
+[sub_resource type="Animation" id="Animation_xkyx3"]
+resource_name = "ui_pois"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ne:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(398.5, 141.5), Vector2(-619, 141.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ne:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_0mjbw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ne:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(398.5, 141.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ne:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_gb55e"]
+resource_name = "ui.näkyy"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ne:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(-619, 141.5), Vector2(398.5, 141.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ne:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2smg1"]
+_data = {
+"RESET": SubResource("Animation_0mjbw"),
+"ui.näkyy": SubResource("Animation_gb55e"),
+"ui_pois": SubResource("Animation_xkyx3")
+}
+
+[node name="ui" type="Control" node_paths=PackedStringArray("ne", "Animation_player")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,8 +112,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_60l7d")
 script = ExtResource("3_h4nxf")
+ne = NodePath("ne")
+Animation_player = NodePath("AnimationPlayer")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="ne" type="NinePatchRect" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -31,40 +124,45 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -46.0
-offset_top = -30.0
-offset_right = 33.0
-offset_bottom = 31.0
+offset_left = -1195.0
+offset_top = -182.5
+offset_right = -840.0
+offset_bottom = 182.5
 grow_horizontal = 2
 grow_vertical = 2
 region_rect = Rect2(8, 8, 16, 16)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ne"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -172.5
+offset_top = -176.5
+offset_right = 172.5
+offset_bottom = 176.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="NinePatchRect/VBoxContainer"]
+[node name="Button" type="Button" parent="ne/VBoxContainer"]
 layout_mode = 2
 text = "continue"
 
-[node name="Button2" type="Button" parent="NinePatchRect/VBoxContainer"]
+[node name="Button2" type="Button" parent="ne/VBoxContainer"]
 layout_mode = 2
 text = "controls"
 
-[node name="Button3" type="Button" parent="NinePatchRect/VBoxContainer"]
+[node name="Button3" type="Button" parent="ne/VBoxContainer"]
 layout_mode = 2
 text = "quit"
 
-[connection signal="pressed" from="NinePatchRect/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="NinePatchRect/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="NinePatchRect/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2smg1")
+}
+
+[connection signal="pressed" from="ne/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ne/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="ne/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]

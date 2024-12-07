@@ -22,6 +22,7 @@ var dash_start_position = 0
 var dash_direction = 0
 var dash_timer = 0
 var dash_amount = 1
+var death_count = 0
 # Maximum health
 @onready var health = 3  # Starting health
 @export var collectible: int = 0
@@ -34,7 +35,9 @@ var dash_amount = 1
 var kuolema = 0
 
 var emp_timer = 7
-var emp_timer_active = false 
+var emp_timer_active = false
+var timer = 7
+var timer_active = false 
 
 
 func _physics_process(delta: float) -> void:
@@ -124,9 +127,12 @@ func _physics_process(delta: float) -> void:
 		gamemanager.ansat1.set_process_mode(PROCESS_MODE_DISABLED)
 		gamemanager.ansat1.visible = false
 		print("öojägdsaö.ih")
+		
 		await get_tree().create_timer(7.0).timeout
 		gamemanager.ansat1.set_process_mode(PROCESS_MODE_INHERIT)
 		gamemanager.ansat1.visible = true
+		print(timer)
+		
 		
 		emp_timer = 7
 		
@@ -159,11 +165,13 @@ func die() -> void:
 	await get_tree().create_timer(0.1).timeout
 	get_tree().reload_current_scene()
 	
+	
 func print_collectible():
 	print(collectible)
 	if currenthealth == 0:
-		get_tree().reload_current_scene()
 		collectible = 0
+		get_tree().reload_current_scene()
+		
 		
 		
 
@@ -182,27 +190,5 @@ func _on_kuolema_body_entered(_body: Node2D) -> void:
 	die()
 	print("damm you have gotten FAT")
 	currenthealth = maxhealth
-	
-	
-	#velocity.x = move_toward(velocity.x, 0, walk_speed * deceleration)
-#piiloansa perkele!
-
- # Start the timer to delay+ seeking to the last frame slightly
-
-	
-	
-
-
-		
-		
-		
-		
-	
-	
-	
-	
-
-		
-		
 
 		
