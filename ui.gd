@@ -6,7 +6,9 @@ extends Control
 
 
 enum  STATE {ne}
-var ui_state = STATE.ne
+var ui_state = STATE
+
+
 
 
 func _input(event):
@@ -15,8 +17,10 @@ func _input(event):
 			STATE.ne:
 				if ne.visible == true:
 					Animation_player.play("ui_pois")
+					get_tree().paused = false
 				else:
 					Animation_player.play("ui.näkyy")
+	
 					
 	
 		
@@ -27,6 +31,7 @@ func hide_and_show(first : String, second : String):
 
 
 func _on_button_pressed() -> void:
+	Animation_player.play("ui_pois")
 	get_tree().paused = false
 	
 	

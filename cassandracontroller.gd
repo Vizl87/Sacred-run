@@ -126,7 +126,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("emp") and emp_timer <= 0:
 		gamemanager.ansat1.set_process_mode(PROCESS_MODE_DISABLED)
 		gamemanager.ansat1.visible = false
-		print("öojägdsaö.ih")
+	
 		
 		await get_tree().create_timer(7.0).timeout
 		gamemanager.ansat1.set_process_mode(PROCESS_MODE_INHERIT)

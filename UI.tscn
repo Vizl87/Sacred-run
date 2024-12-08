@@ -13,34 +13,6 @@ Button/styles/focus = SubResource("StyleBoxEmpty_7f5xv")
 Button/styles/hover = ExtResource("1_pdhka")
 Button/styles/normal = ExtResource("1_ltxg2")
 
-[sub_resource type="Animation" id="Animation_xkyx3"]
-resource_name = "ui_pois"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ne:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(2, 2),
-"update": 0,
-"values": [Vector2(398.5, 141.5), Vector2(-619, 141.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ne:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="Animation" id="Animation_0mjbw"]
 length = 0.001
 tracks/0/type = "value"
@@ -96,6 +68,34 @@ tracks/1/keys = {
 "values": [true, true]
 }
 
+[sub_resource type="Animation" id="Animation_xkyx3"]
+resource_name = "ui_pois"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ne:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(398.5, 141.5), Vector2(-619, 141.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ne:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2smg1"]
 _data = {
 "RESET": SubResource("Animation_0mjbw"),
@@ -124,9 +124,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1195.0
+offset_left = -177.5
 offset_top = -182.5
-offset_right = -840.0
+offset_right = 177.5
 offset_bottom = 182.5
 grow_horizontal = 2
 grow_vertical = 2
