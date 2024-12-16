@@ -40,6 +40,8 @@ var timer = 7
 var timer_active = false 
 
 
+
+
 func _physics_process(delta: float) -> void:
 	
 	health_anim._on_health_changed()
@@ -121,7 +123,7 @@ func _physics_process(delta: float) -> void:
 
 	if emp_timer >= 0:
 		emp_timer -= delta
-		print(emp_timer)
+
 	
 	if Input.is_action_just_pressed("emp") and emp_timer <= 0:
 		gamemanager.ansat1.set_process_mode(PROCESS_MODE_DISABLED)
@@ -131,7 +133,7 @@ func _physics_process(delta: float) -> void:
 		await get_tree().create_timer(7.0).timeout
 		gamemanager.ansat1.set_process_mode(PROCESS_MODE_INHERIT)
 		gamemanager.ansat1.visible = true
-		print(timer)
+
 		
 		
 		emp_timer = 7
@@ -191,4 +193,13 @@ func _on_kuolema_body_entered(_body: Node2D) -> void:
 	print("damm you have gotten FAT")
 	currenthealth = maxhealth
 
+
+	
+	
+
+
 		
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	get_tree().change_scene_to_file("res://WIN/win.tscn")

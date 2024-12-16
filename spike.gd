@@ -9,7 +9,7 @@ extends Area2D
 @onready var dumdum = $dumdum
 
 
-signal ansa_laukaistu(damage: int)
+
 
 func _ready() -> void:
 	ansa.connect("animation_finished", Callable(self, "_on_AnimatedSprite_animation_finished"))

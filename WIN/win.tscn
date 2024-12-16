@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cawmoyo7wjyne"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_odf4c"]
+
+[node name="NinePatchRect" type="NinePatchRect"]
+offset_right = 1148.0
+offset_bottom = 651.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1158.0
+offset_bottom = 645.0
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxLine_odf4c")
+text = "YOU WIN "
+horizontal_alignment = 1

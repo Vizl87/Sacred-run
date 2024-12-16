@@ -9,7 +9,7 @@ static var collectible: int = 0
 
 
 # Signal to notify when this collectible is picked up
-signal collected
+
 #func _ready():
 
 	# Connect to the body_entered signal to detect when the player collides with this collectible

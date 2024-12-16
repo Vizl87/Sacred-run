@@ -14,8 +14,6 @@ func _ready() -> void:
 	h3.connect("animation_finished", Callable(self, "_on_AnimatedSprite_animation_finished"))
 
 
-func _process(delta: float) -> void:
-	pass
 
 func _on_health_changed():
 	
@@ -31,13 +29,13 @@ func _on_health_changed():
 		h3.play("hearts")
 		
 		
-		h3.hide()
+		h1.hide()
 	if player.currenthealth == 1 && !animation_finished:
 		h1.play("hearts")
 		h3.play("hearts")
 		
 		h2.hide()
-		h3.hide()
+		
 		
 func _on_AnimatedSprite_animation_finished():
 	h1.stop()

@@ -6,20 +6,24 @@ extends Control
 
 
 enum  STATE {ne}
-var ui_state = STATE
+var ui_state = STATE.ne
 
 
 
 
 func _input(event):
 	if event.is_action_pressed("ui pois") and not Animation_player.is_playing():
+		
+	
+		
 		match ui_state:
 			STATE.ne:
 				if ne.visible == true:
 					Animation_player.play("ui_pois")
-					get_tree().paused = false
+					
 				else:
 					Animation_player.play("ui.näkyy")
+					
 	
 					
 	
@@ -38,7 +42,7 @@ func _on_button_pressed() -> void:
 
 
 func _on_button_2_pressed() -> void:
-	print("pussy") # Replace with function body.
+	get_tree().reload_current_scene()
 
 
 func _on_button_3_pressed() -> void:
