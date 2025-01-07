@@ -21,6 +21,8 @@
 _data = [Vector2(0, 0.742647), 0.0, 0.0, 0, 0, Vector2(1, 0.455882), -1.92736, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j8pv6"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkhww"]
 size = Vector2(23, 53)
 
@@ -32,8 +34,6 @@ size = Vector2(23.5, 202)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hxkd"]
 size = Vector2(228.25, 55)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j8pv6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqxxx"]
 size = Vector2(62, 13.625)
@@ -207,7 +207,7 @@ position = Vector2(-2557, -7)
 collision_mask = 3
 jump_force = -600.0
 dash_curve = SubResource("Curve_nmu1q")
-health_anim = NodePath("../ui/hearts")
+health_anim = NodePath("Camera2D/ui/hearts")
 
 [node name="CollisionShape2D" parent="cassandra" index="0"]
 position = Vector2(-9.25, -0.75)
@@ -217,6 +217,31 @@ position = Vector2(11, 13)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
+
+[node name="ui" type="CanvasLayer" parent="cassandra/Camera2D"]
+
+[node name="Panel" type="Panel" parent="cassandra/Camera2D/ui"]
+offset_left = 133.0
+offset_top = -276.0
+offset_right = 375.0
+offset_bottom = -216.0
+
+[node name="pointslabel" type="Label" parent="cassandra/Camera2D/ui/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.354
+anchor_bottom = -0.354
+offset_left = 138.0
+offset_top = -258.84
+offset_right = 325.0
+offset_bottom = -187.84
+
+[node name="hearts" parent="cassandra/Camera2D/ui" node_paths=PackedStringArray("player") instance=ExtResource("5_emprv")]
+theme_override_styles/panel = SubResource("StyleBoxEmpty_j8pv6")
+player = NodePath("../../..")
+
+[node name="ui" parent="cassandra/Camera2D/ui" instance=ExtResource("3_b20p7")]
 
 [node name="cassandra" type="Area2D" parent="cassandra"]
 
@@ -336,31 +361,6 @@ offset_right = 48.0
 offset_bottom = 133.0
 text = "wallclimb this
 "
-
-[node name="ui" type="CanvasLayer" parent="."]
-
-[node name="Panel" type="Panel" parent="ui"]
-offset_left = 133.0
-offset_top = -276.0
-offset_right = 375.0
-offset_bottom = -216.0
-
-[node name="pointslabel" type="Label" parent="ui/Panel"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_top = -0.354
-anchor_bottom = -0.354
-offset_left = 138.0
-offset_top = -258.84
-offset_right = 325.0
-offset_bottom = -187.84
-
-[node name="hearts" parent="ui" node_paths=PackedStringArray("player") instance=ExtResource("5_emprv")]
-theme_override_styles/panel = SubResource("StyleBoxEmpty_j8pv6")
-player = NodePath("../../cassandra")
-
-[node name="ui" parent="ui" instance=ExtResource("3_b20p7")]
 
 [node name="PxArt(1)" type="Sprite2D" parent="."]
 visible = false
@@ -750,7 +750,7 @@ tile_set = SubResource("TileSet_14kvb")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-2471, -16.5)
+position = Vector2(3938, -1488)
 shape = SubResource("RectangleShape2D_d2n38")
 
 [connection signal="body_entered" from="Piiloansa" to="." method="_on_spike_body_entered"]

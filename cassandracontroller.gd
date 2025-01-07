@@ -38,6 +38,7 @@ var emp_timer = 7
 var emp_timer_active = false
 var timer = 7
 var timer_active = false 
+var can_dash = true
 
 
 
@@ -57,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump deceleration when the jump key is released
 	if Input.is_action_just_pressed("jump") and (is_on_wall() or coyote_time_remaining > 0):
 		velocity.y = jump_force
-	# Handle horizontal movement (walking/running)
+
 	var speed
 	if Input.is_action_pressed("run") and is_on_floor():
 		speed = run_speed
@@ -65,14 +66,16 @@ func _physics_process(delta: float) -> void:
 		speed = walk_speed
 
 	var direction := Input.get_axis("left", "right")
+	
 	if direction != 0:
-		# Move player with acceleration
+
 		velocity.x = move_toward(velocity.x, direction * speed, speed * acceleration)
-		# Flip the sprite based on movement direction
+
 		$AnimatedSprite2D.flip_h = direction < 0
 	else:
-		# Decelerate when no direction is pressed
+
 		velocity.x = move_toward(velocity.x, 0, walk_speed * deceleration)
+
 		
 		
 
@@ -85,31 +88,31 @@ func _physics_process(delta: float) -> void:
 	
 
 	# Dash activation
-	if Input.is_action_just_pressed("dash") and direction != 0 and not is_dashing and dash_timer <= 0 and dash_amount <= 1:
+	if Input.is_action_just_pressed("dash") and direction != 0 and not is_dashing and dash_timer <= 0 and can_dash:
 		is_dashing = true
 		dash_start_position = position.x
 		dash_direction = direction
 		dash_timer = 0.5
-		
-	
-	
+		can_dash = false  
 
-	# Perform dash movement
+
 	if is_dashing:
 		var current_distance = abs(position.x - dash_start_position)
 		if current_distance >= dash_max_distance or is_on_wall():
 			is_dashing = false
 		else:
 			velocity.x = dash_direction * dash_speed * dash_curve.sample(current_distance / dash_max_distance)
-			velocity.y = 0  # Prevent vertical movement during dash
-	else:
-		pass
+			velocity.y = 0  
 
-	# Reduce the dash cooldown timer
+
 	if dash_timer > 0:
 		dash_timer -= delta
 	if dash_timer == 0:
 		is_dashing = false
+
+
+	if is_on_floor() or is_on_wall():
+		can_dash = true  
 	
 		
 	if Input.is_action_just_pressed("heal"):

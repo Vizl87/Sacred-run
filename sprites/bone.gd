@@ -15,7 +15,6 @@ static var collectible: int = 0
 	# Connect to the body_entered signal to detect when the player collides with this collectible
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "cassandra":
-		emit_signal("collected")
 		collectible += 1
 		
 		$"../AnimatedSprite2D".hide()
